@@ -1,0 +1,71 @@
+x-build: &default-build
+  context: .
+  dockerfile: ./Dockerfile
+
+x-app-vars: &default-app-vars
+  POSTGRES_HOST: postgresql
+  POSTGRES_PORT: 5432
+  POSTGRES_DB: postgres_db
+  POSTGRES_USER: postgres_user
+  POSTGRES_PASSWORD: postgres_password
+  AWS_REGION: ${AWS_REGION:-ap-south-1}
+  AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-username}
+  AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-password}
+  AWS_SESSION_TOKEN: ${AWS_SESSION_TOKEN}
+
+services:
+  app:
+    build: 
+      <<: *default-build
+      target: app
+    ports:
+      - "8080:8080"
+    command: 
+      [
+        "gunicorn",
+        "ekart_inventory_api.main:app",
+        "--workers=4",
+        "--worker-class=ekart_inventory_api.workers.RestartableUvicornWorker",
+        "--bind=0.0.0.0:8080",
+        "--access-logfile=-",
+        "--reload",
+        "--log-level=debug"
+      ]
+    environment:
+      <<: *default-app-vars
+    volumes:
+      - ./src/ekart_inventory_api:/opt/ekart_inventory_api
+    depends_on:
+      - db
+      - minio
+  
+  db:
+    image: postgres:14.5-bullseye
+    environment:
+      <<: *default-app-vars
+    ports:
+      - "5432:5432"
+    volumes:
+      - db:/var/lib/postgresql/data
+  
+  minio:
+    image: minio/minio
+    ports:
+      - mode: host
+        protocol: tcp
+        published: "${MINIO_PORT:-9002}"
+        target: 9002
+      - mode: host
+        protocol: tcp
+        published: "${MINIO_CONSOLE_PORT:-9003}"
+        target: 9003
+    volumes:
+      - minio_storage: /data
+    environment:
+      - MINIO_ROOT_USER: username
+      - MINIO_ROOT_PASSWORD: password
+    command: server --address :"${MINIO_PORT:-9002}" --console-address :"${MINIO_CONSOLE_PORT:-9003}" /data
+
+volumes:
+  db:
+  minio_storage: 

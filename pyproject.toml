@@ -1,0 +1,39 @@
+[project]
+name = "ekart"
+version = "0.1.0"
+description = "ekart for inventory and payment management"
+authors = [
+    {name = "Apoorv Yadav"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi (>=0.115.7,<0.116.0)",
+    "dynaconf (>=3.2.7,<4.0.0)",
+    "pydantic (>=2.10.6,<3.0.0)",
+    "pandas (>=2.2.3,<3.0.0)",
+    "numpy (>=2.2.2,<3.0.0)",
+    "uvicorn (>=0.34.0,<0.35.0)",
+    "gunicorn (>=23.0.0,<24.0.0)",
+    "sqlalchemy (>=2.0.37,<3.0.0)",
+    "boto3 (>=1.36.6,<2.0.0)",
+    "requests (>=2.32.3,<3.0.0)",
+    "python-jose (>=3.3.0,<4.0.0)",
+    "psycopg (>=3.2.4,<4.0.0)",
+    "tqdm (>=4.67.1,<5.0.0)",
+    "pytest (>=8.3.4,<9.0.0)",
+    "moto (>=5.0.27,<6.0.0)",
+    "pytest-asyncio (>=0.25.2,<0.26.0)",
+    "asyncpg (>=0.30.0,<0.31.0)",
+    "alembic (>=1.14.1,<2.0.0)",
+    "psycopg2-binary (>=2.9.10,<3.0.0)",
+    "python-multipart (>=0.0.20,<0.0.21)",
+    "ruff (>=0.9.3,<0.10.0)",
+    "pre-commit (>=4.1.0,<5.0.0)",
+    "httpx (>=0.28.1,<0.29.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

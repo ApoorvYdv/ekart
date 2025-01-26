@@ -1,0 +1,23 @@
+---
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    # Ruff version.
+    rev: v0.6.8
+    hooks:
+      # Run the linter.
+      - id: ruff
+        args: [ --fix ]
+      # Run the formatter.
+        exclude: '^app/alembic/versions|^app/utils/pdf_generator'
+      - id: ruff-format
+        exclude: '^app/alembic/versions|^app/utils/pdf_generator'
+  - repo: https://github.com/pycqa/isort
+    rev: e44834b7b294701f596c9118d6c370f86671a50d # 5.12.0
+    hooks:
+      - id: isort
+        args: ["--profile", "black", "--filter-files", "--check", "-q"]
+        exclude: '^app/alembic/versions|^app/utils/pdf_generator'
+
+

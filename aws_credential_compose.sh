@@ -1,0 +1,1 @@
+aws-vault exec sso-gc-tsb-oneapp-services-dev-oneapp-cct-api-developer -- docker compose up --build

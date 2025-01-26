@@ -43,7 +43,7 @@ class DatabaseConfig:
             password=self.db_password,
             host=self.db_host,
             port=int(self.db_port) if self.db_port else None,
-            database=self.db_name if not use_test_db else "pems_api_test",
+            database=self.db_name if not use_test_db else "ekart_api_test",
         )
         return url_object
 

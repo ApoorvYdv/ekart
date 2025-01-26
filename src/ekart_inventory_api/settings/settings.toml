@@ -4,7 +4,7 @@ DB_PASSWORD="root"
 DB_ENGINE="postgresql+psycopg2"
 DB_HOST="localhost"
 DB_PORT=5432
-DB_NAME="pems_api"
+DB_NAME="ekart_api"
 COGNITO_USER_POOL_ID = "ap-south-1_hbbkIzw4t"
 ALLOWED_ORIGINS = ["*"]
 

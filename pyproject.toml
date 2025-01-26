@@ -6,7 +6,7 @@ authors = [
     {name = "Apoorv Yadav"}
 ]
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.13,<4.0"
 dependencies = [
     "fastapi (>=0.115.7,<0.116.0)",
     "dynaconf (>=3.2.7,<4.0.0)",
@@ -16,7 +16,6 @@ dependencies = [
     "uvicorn (>=0.34.0,<0.35.0)",
     "gunicorn (>=23.0.0,<24.0.0)",
     "sqlalchemy (>=2.0.37,<3.0.0)",
-    "boto3 (>=1.36.6,<2.0.0)",
     "requests (>=2.32.3,<3.0.0)",
     "python-jose (>=3.3.0,<4.0.0)",
     "psycopg (>=3.2.4,<4.0.0)",
@@ -30,7 +29,12 @@ dependencies = [
     "python-multipart (>=0.0.20,<0.0.21)",
     "ruff (>=0.9.3,<0.10.0)",
     "pre-commit (>=4.1.0,<5.0.0)",
-    "httpx (>=0.28.1,<0.29.0)"
+    "httpx (>=0.28.1,<0.29.0)",
+    "starlette-context (>=0.3.6,<0.4.0)",
+    "cachetools (>=5.5.1,<6.0.0)",
+    "aioboto3 (>=13.4.0,<14.0.0)",
+    "asgiref (>=3.8.1,<4.0.0)",
+    "jwcrypto (>=1.5.6,<2.0.0)"
 ]
 
 

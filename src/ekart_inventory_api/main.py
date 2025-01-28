@@ -8,7 +8,7 @@ from starlette_context.plugins import CorrelationIdPlugin, RequestIdPlugin
 from .settings.config import settings
 
 description = """
-Police Evidence Management System
+Ekart Inventory and Payment Management System
 """
 
 app = FastAPI(
